@@ -74,19 +74,70 @@ static void EditContact(List<int> ids, Dictionary<int, string> names, Dictionary
     Console.Write("Digite el numero de telefono del contacto: ");
     string telefono = Console.ReadLine();
     bool wasFound = false;
+    int id = -1;
     foreach(var phone in telephones)
     {
         if (phone.Value == telefono)
         {
-            telephones.Remove(phone.Key);
             Console.WriteLine("Usuario encontrado: ");
-            Console.WriteLine("Modifique los valores ");
-
+            id = phone.Key;
             wasFound = true;
         }
     }
-    if(!wasFound) Console.WriteLine("El telefono no se encuentra en la lista de contactos");
-    
+    if (!wasFound) Console.WriteLine("El telefono no se encuentra en la lista de contactos");
+    else
+    {
+        Console.WriteLine("Si no desea modificar el dato entonces dejelo vacio ");
+
+        Console.WriteLine($"Modificar nombres ({names[id]}): ");
+        string NewName = Console.ReadLine();
+        if (!string.IsNullOrEmpty(NewName)) {
+            names[id] = NewName;
+        }
+
+        Console.WriteLine($"Modificar apellidos ({lastnames[id]}): ");
+        string NewLastname = Console.ReadLine();
+        if (!string.IsNullOrEmpty(NewLastname))
+        {
+            lastnames[id] = NewLastname;
+        }
+
+        Console.WriteLine($"Modificar direccion ({addresses[id]}): ");
+        string NewAddress = Console.ReadLine();
+        if (!string.IsNullOrEmpty(NewAddress))
+        {
+            addresses[id] = NewAddress;
+        }
+
+        Console.WriteLine($"Modificar telefono ({telephones[id]}): ");
+        string NewPhone = Console.ReadLine();
+        if (!string.IsNullOrEmpty(NewPhone))
+        {
+            telephones[id] = NewPhone;
+        }
+
+        Console.WriteLine($"Modificar email ({emails[id]}): ");
+        string NewEmail = Console.ReadLine();
+        if (!string.IsNullOrEmpty(NewEmail))
+        {
+            emails[id] = NewEmail;
+        }
+
+        Console.WriteLine($"Modificar edad ({ages[id]}): ");
+        try
+        {
+            int NewAge = Convert.ToInt32(Console.ReadLine());
+            ages[id] = NewAge;
+
+        }
+        catch (FormatException) { Console.WriteLine("La edad no sigue el formato correcto, no fue modificada"); }
+
+        Console.WriteLine($"Modifique si es mejor amigo ({(bestFriends[id] ? "Yes" : "No")}) 1. Si, 2. No");
+        bool input = (Console.ReadLine() == "1" ? true : false);
+        bestFriends[id] = input;
+
+    }
+
 }
 static void AddContact(List<int> ids, Dictionary<int, string> names, Dictionary<int, string> lastnames, Dictionary<int, string> addresses, Dictionary<int, string> telephones, Dictionary<int, string> emails, Dictionary<int, int> ages, Dictionary<int, bool> bestFriends)
 {
