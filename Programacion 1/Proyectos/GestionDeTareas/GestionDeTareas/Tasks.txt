@@ -1,0 +1,6 @@
+sebastian,Alvarez,12/3/2025,12:06 p. m.
+Correr,el domingo,12/3/2025,12:08 p. m.
+sebastian,alvarez,12/3/2025,12:09 p. m.
+sebastian,alvarez,12/3/2025,1:14 p. m.
+fregar,fregar en la tarde,12/3/2025,1:38 p. m.
+Cocinar la comida de la semana,Cocinar en la noche,12/3/2025,1:43 p. m.
